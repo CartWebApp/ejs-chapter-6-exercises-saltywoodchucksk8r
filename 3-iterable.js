@@ -6,8 +6,28 @@ If you used an array to represent the group’s members, don’t just return the
 It is okay if your iterator behaves strangely when the group is modified during iteration.
 */
 
-// Your code here (and the code from the previous exercise)
+// Your code here (and the code from the previous exercise)\
 
+add(value) { {
+  if (!this.has(value)){
+    this.members.push(value);
+  }
+}
+
+delete(value){
+  this.members = this.members.filter(v => v !== value);
+}
+has(value){
+  return this.members.includes(value);
+}
+ static from(collection) {
+  let group = new group;
+  for(let value of collection){
+    group.add(value);
+  }
+  return group;
+ }
+}
 
 // Tests:
 for (let value of Group.from(["a", "b", "c"])) {
